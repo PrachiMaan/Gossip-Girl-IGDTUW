@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gossip Girl IGDTUW — You know you love me</title>
+  <meta name="description" content="Gossip Girl IGDTUW — a chic, tongue‑in‑cheek student gossip & lifestyle blog for IGDTUW. Anonymous tips, campus buzz, events, and more." />
+  <meta name="keywords" content="Gossip Girl IGDTUW, IGDTUW gossip blog, IGDTUW rumors, IGDTUW events, Delhi women tech university" />
+  <meta property="og:title" content="Gossip Girl IGDTUW" />
+  <meta property="og:description" content="Spotted: drama, tea, and campus buzz. Submit secrets anonymously. You know you love me — xoxo" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0A0A0A',
+            gold: '#D4AF37',
+            cream: '#FAF7F2',
+            blush: '#F3DDE1',
+            beige: '#E8DFD6'
+          },
+          fontFamily: {
+            serif: ['\"Playfair Display\"', 'Georgia', 'serif'],
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(212,175,55,.35), 0 10px 40px rgba(0,0,0,.35)'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Inter + Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Elegant gold underline */
+    .gold-underline { position: relative; }
+    .gold-underline::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 64px; height: 2px; background: linear-gradient(90deg,#D4AF37,transparent); }
+
+    /* Card hover */
+    .card { transition: transform .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 14px 35px rgba(0,0,0,.35); }
+
+    /* Frosted header */
+    .backdrop-blur-md { backdrop-filter: blur(10px); }
+
+    /* Simple modal */
+    .modal { position: fixed; inset: 0; display: none; }
+    .modal.open { display: grid; place-items: center; }
+  </style>
+</head>
+<body class="bg-ink text-cream font-sans">
+  <!-- Sticky Navbar -->
+  <header class="fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="mt-3 mb-2 flex items-center justify-between rounded-2xl border border-zinc-800/70 bg-black/50 backdrop-blur-md px-4 py-3 shadow-glow">
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="h-9 w-9 rounded-full bg-gradient-to-br from-gold/90 to-amber-400/70 grid place-items-center shadow-glow">
+            <span class="text-ink font-semibold">GG</span>
+          </div>
+          <div>
+            <p class="font-serif text-xl leading-none">Gossip Girl</p>
+            <p class="text-[11px] tracking-widest uppercase text-gold/90">IGDTUW</p>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#home" class="hover:text-gold">Home</a>
+          <a href="#submit" class="hover:text-gold">Submit a Secret</a>
+          <a href="#buzz" class="hover:text-gold">Campus Buzz</a>
+          <a href="#events" class="hover:text-gold">Events</a>
+          <a href="#about" class="hover:text-gold">About</a>
+          <a href="#contact" class="hover:text-gold">Contact</a>
+          <a href="https://instagram.com/" target="_blank" class="hover:text-gold" aria-label="Instagram">Instagram</a>
+          <a href="https://x.com/" target="_blank" class="hover:text-gold" aria-label="X (Twitter)">X</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="menuBtn" class="md:hidden p-2 rounded-lg border border-zinc-800 hover:border-gold/60">☰</button>
+          <button id="adminBtn" class="hidden sm:inline-flex items-center gap-2 text-xs rounded-full border border-zinc-700 px-3 py-1 hover:border-gold/60" title="Admin">⚙️ Admin</button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-zinc-800/70 bg-black/70 backdrop-blur-md px-4 py-4 space-y-2">
+        <a href="#home" class="block hover:text-gold">Home</a>
+        <a href="#submit" class="block hover:text-gold">Submit a Secret</a>
+        <a href="#buzz" class="block hover:text-gold">Campus Buzz</a>
+        <a href="#events" class="block hover:text-gold">Events</a>
+        <a href="#about" class="block hover:text-gold">About</a>
+        <a href="#contact" class="block hover:text-gold">Contact</a>
+        <button id="adminBtnMobile" class="mt-2 w-full text-left hover:text-gold">⚙️ Admin</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative pt-40 pb-20">
+    <div class="absolute inset-0 -z-10 opacity-[.18]" aria-hidden>
+      <div class="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(212,175,55,.22),transparent_70%)]"></div>
+    </div>
+    <div class="mx-auto max-w-5xl px-6 text-center">
+      <h1 class="font-serif text-4xl sm:text-6xl leading-tight">
+        You know you love me, <span class="text-gold">xoxo</span>
+      </h1>
+      <p class="mt-4 text-lg text-beige/80">Gossip Girl IGDTUW — the chic, classy, slightly dramatic corner of campus. Anonymous tips. Fast tea. Zero chill.</p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="#submit" class="inline-flex items-center gap-2 rounded-full border border-gold/60 px-5 py-3 hover:bg-gold/10">Submit a Secret →</a>
+        <a href="#buzz" class="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-5 py-3 hover:border-gold/60">See Campus Buzz</a>
+      </div>
+    </div>
+
+    <!-- Latest stories grid -->
+    <div class="mx-auto max-w-6xl px-6 mt-16">
+      <div class="flex items-end justify-between mb-6">
+        <h2 class="font-serif text-2xl gold-underline">Latest Stories</h2>
+        <div class="text-sm text-beige/70">No plugins. Fully in‑browser. ✨</div>
+      </div>
+      <div id="latestGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- Submit a Secret -->
+  <section id="submit" class="py-20 border-t border-zinc-800/70 bg-[linear-gradient(180deg,rgba(212,175,55,.06),transparent)]">
+    <div class="mx-auto max-w-5xl px-6">
+      <h2 class="font-serif text-3xl">Submit a Secret</h2>
+      <p class="mt-2 text-beige/80">Anonymous by default. Name/email optional. Be witty, be kind — no hate speech or personal attacks.</p>
+
+      <!-- Built‑in anonymous tip form (stores to localStorage) -->
+      <form id="tipForm" class="mt-8 grid gap-4 sm:grid-cols-2">
+        <div class="sm:col-span-2">
+          <label class="block text-sm mb-1">Your Secret *</label>
+          <textarea id="tipMessage" required class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" rows="4" placeholder="Spotted: someone sneaking out of the lab at 2 a.m. Wonder what that’s about?"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Name (optional)</label>
+          <input id="tipName" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Email (optional)</label>
+          <input id="tipEmail" type="email" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" />
+        </div>
+        <div class="sm:col-span-2 flex items-center gap-3">
+          <button class="rounded-xl bg-gold/90 text-ink px-5 py-3 font-semibold hover:bg-gold" type="submit">Send Anonymously</button>
+          <span id="tipStatus" class="text-sm text-beige/70"></span>
+        </div>
+      </form>
+
+      <!-- Tip queue (admin only) rendered dynamically -->
+      <div id="tipQueue" class="mt-6 hidden">
+        <h3 class="font-serif text-xl">Pending Tips</h3>
+        <div id="tipList" class="mt-3 grid gap-3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campus Buzz -->
+  <section id="buzz" class="py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <h2 class="font-serif text-3xl">Campus Buzz</h2>
+          <p class="text-beige/80">Rumors, updates, and tea. Auto‑sorted by popularity or recency.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="text-sm">Sort by</label>
+          <select id="sortSelect" class="rounded-xl bg-black/50 border border-zinc-800 p-2 focus:outline-none focus:border-gold/70">
+            <option value="popular">Most Popular</option>
+            <option value="recent">Most Recent</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="buzzList" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events" class="py-20 border-t border-zinc-800/70 bg-[linear-gradient(180deg,rgba(243,221,225,.05),transparent)]">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex items-end justify-between">
+        <h2 class="font-serif text-3xl">Events</h2>
+        <a id="eventsCalLink" href="#" target="_blank" class="text-sm text-gold/90 hover:underline hidden">Open calendar →</a>
+      </div>
+      <p class="text-beige/80 mt-1">IGDTUW fests, parties & happenings.</p>
+      <div id="eventsGrid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20">
+    <div class="mx-auto max-w-4xl px-6">
+      <h2 class="font-serif text-3xl">About Gossip Girl IGDTUW</h2>
+      <div class="mt-3 text-beige/85 leading-relaxed">
+        <p><span class="text-gold">Disclaimer, darlings:</span> this is a fictional, student‑run gossip & lifestyle site — made for fun. We celebrate the vibe, not the vitriol. Keep it playful, keep it kind, and remember: anonymity is a privilege, not a weapon.</p>
+        <p class="mt-4 italic">“If you’ve got the tea, we’ve got the cup.”</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 border-t border-zinc-800/70">
+    <div class="mx-auto max-w-4xl px-6">
+      <h2 class="font-serif text-3xl">Contact / Tip Box</h2>
+      <p class="mt-2 text-beige/80">Slide into our DMs or drop an anonymous tip above. For collabs, use this form.</p>
+      <form id="contactForm" class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class="sm:col-span-2">
+          <label class="block text-sm mb-1">Your Message</label>
+          <textarea required class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" rows="4" name="message"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Name</label>
+          <input class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" name="name" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Email</label>
+          <input type="email" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" name="email" />
+        </div>
+        <div class="sm:col-span-2">
+          <button class="rounded-xl bg-gold/90 text-ink px-5 py-3 font-semibold hover:bg-gold" type="submit">Send</button>
+          <span id="contactStatus" class="ml-3 text-sm text-beige/70"></span>
+        </div>
+      </form>
+      <div class="mt-6 text-sm text-beige/70">
+        Follow us: <a href="https://instagram.com/" target="_blank" class="hover:text-gold">Instagram</a> · <a href="https://x.com/" target="_blank" class="hover:text-gold">X (Twitter)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-zinc-800/70">
+    <div class="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-beige/70">
+      <p>© <span id="year"></span> Gossip Girl IGDTUW. All tea, no toxicity.</p>
+      <p>Made with ♥ for IGDTUW — Not affiliated with the university.</p>
+    </div>
+  </footer>
+
+  <!-- Admin Modal -->
+  <div id="adminModal" class="modal">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-10 mx-4 w-full max-w-4xl rounded-2xl border border-zinc-800 bg-ink p-6 shadow-glow">
+      <div class="flex items-center justify-between">
+        <h3 class="font-serif text-2xl">Admin Panel</h3>
+        <button id="adminClose" class="text-beige/70 hover:text-gold">✕</button>
+      </div>
+      <p class="text-sm text-beige/70 mt-1">Add posts/events, review tips, import/export JSON. Everything is saved to your browser (localStorage).</p>
+
+      <!-- Tabs -->
+      <div class="mt-4 flex flex-wrap gap-2">
+        <button data-tab="posts" class="admin-tab rounded-full border border-zinc-700 px-3 py-1 text-sm">Posts</button>
+        <button data-tab="events" class="admin-tab rounded-full border border-zinc-700 px-3 py-1 text-sm">Events</button>
+        <button data-tab="tips" class="admin-tab rounded-full border border-zinc-700 px-3 py-1 text-sm">Tips</button>
+        <div class="ml-auto flex gap-2">
+          <button id="exportBtn" class="rounded-full border border-zinc-700 px-3 py-1 text-sm hover:border-gold/60">Export JSON</button>
+          <label class="rounded-full border border-zinc-700 px-3 py-1 text-sm hover:border-gold/60 cursor-pointer">Import JSON<input id="importInput" type="file" accept="application/json" class="hidden"></label>
+          <button id="clearAll" class="rounded-full border border-red-800/70 text-red-300 px-3 py-1 text-sm hover:border-red-500/70" title="Deletes all local data">Clear All</button>
+        </div>
+      </div>
+
+      <!-- Posts Tab -->
+      <div id="tab-posts" class="mt-4">
+        <form id="postForm" class="grid gap-3 sm:grid-cols-2">
+          <input type="hidden" id="postId" />
+          <div class="sm:col-span-2">
+            <label class="block text-sm mb-1">Title</label>
+            <input id="postTitle" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" required />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-sm mb-1">Excerpt</label>
+            <textarea id="postExcerpt" rows="3" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" required></textarea>
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Image URL</label>
+            <input id="postImage" placeholder="https://…" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Or Upload Image</label>
+            <input id="postImageFile" type="file" accept="image/*" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-2" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Date</label>
+            <input id="postDate" type="date" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" />
+          </div>
+          <div class="sm:col-span-2 flex items-center gap-2">
+            <button class="rounded-xl bg-gold/90 text-ink px-4 py-2 font-semibold hover:bg-gold" type="submit">Save Post</button>
+            <button id="resetPost" class="rounded-xl border border-zinc-700 px-4 py-2 hover:border-gold/60" type="button">Reset</button>
+          </div>
+        </form>
+        <div class="mt-4 grid gap-3" id="postList"></div>
+      </div>
+
+      <!-- Events Tab -->
+      <div id="tab-events" class="mt-4 hidden">
+        <form id="eventForm" class="grid gap-3 sm:grid-cols-2">
+          <input type="hidden" id="eventId" />
+          <div class="sm:col-span-2">
+            <label class="block text-sm mb-1">Title</label>
+            <input id="eventTitle" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" required />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-sm mb-1">Description</label>
+            <textarea id="eventDesc" rows="3" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Link (optional)</label>
+            <input id="eventLink" placeholder="https://…" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" />
+          </div>
+          <div>
+            <label class="block text-sm mb-1">Date</label>
+            <input id="eventDate" type="date" class="w-full rounded-xl bg-black/50 border border-zinc-800 p-3 focus:outline-none focus:border-gold/70" />
+          </div>
+          <div class="sm:col-span-2 flex items-center gap-2">
+            <button class="rounded-xl bg-gold/90 text-ink px-4 py-2 font-semibold hover:bg-gold" type="submit">Save Event</button>
+            <button id="resetEvent" class="rounded-xl border border-zinc-700 px-4 py-2 hover:border-gold/60" type="button">Reset</button>
+          </div>
+        </form>
+        <div class="mt-4 grid gap-3" id="eventList"></div>
+      </div>
+
+      <!-- Tips Tab -->
+      <div id="tab-tips" class="mt-4 hidden">
+        <div id="adminTipList" class="grid gap-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: Data + Interactions -->
+  <script>
+    // ====== CONFIG ======
+    const ADMIN_PASSWORD = 'gg-igdtuw'; // Change this
+    const CONTACT_MAILTO = 'mailto:example@igdtuwwaves.in?subject=GG%20IGDTUW%20Contact';
+
+    // ====== STORAGE KEYS ======
+    const LS_POSTS = 'gg_posts';
+    const LS_EVENTS = 'gg_events';
+    const LS_TIPS = 'gg_tips';
+
+    // ====== UTIL ======
+    const uid = () => Math.random().toString(36).slice(2);
+    const el = (sel, root=document) => root.querySelector(sel);
+    const els = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    const timeAgo = (dateStr) => {
+      const d = new Date(dateStr);
+      if (isNaN(d)) return '';
+      const diff = (Date.now() - d.getTime())/1000;
+      if (diff < 60) return `${Math.floor(diff)}s ago`;
+      if (diff < 3600) return `${Math.floor(diff/60)}m ago`;
+      if (diff < 86400) return `${Math.floor(diff/3600)}h ago`;
+      return `${Math.floor(diff/86400)}d ago`;
+    };
+
+    const formatDate = (dateStr) => {
+      const d = new Date(dateStr);
+      return isNaN(d) ? '' : d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    };
+
+    // ====== REACTIONS (localStorage) ======
+    const getReactions = (id) => JSON.parse(localStorage.getItem(`gg_react_${id}`) || '{"hearts":0,"tea":0}');
+    const setReactions = (id, data) => localStorage.setItem(`gg_react_${id}`, JSON.stringify(data));
+
+    const reactionButton = (id, key, label) => {
+      const data = getReactions(id);
+      const btn = document.createElement('button');
+      btn.className = 'text-xs rounded-full border border-zinc-700 px-2 py-1 hover:border-gold/60';
+      btn.textContent = `${label} ${data[key]||0}`;
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const cur = getReactions(id); cur[key] = (cur[key]||0) + 1; setReactions(id, cur);
+        btn.textContent = `${label} ${cur[key]}`;
+      });
+      return btn;
+    };
+
+    // ====== DATA LAYER ======
+    const load = (key, fallback) => {
+      try { const v = JSON.parse(localStorage.getItem(key)); return Array.isArray(v) ? v : fallback; } catch { return fallback; }
+    };
+    const save = (key, val) => localStorage.setItem(key, JSON.stringify(val));
+
+    const SAMPLE_POSTS = [
+      { id: uid(), title: 'Spotted: Late‑night lab escape', excerpt: 'Someone sneaking out of the lab at 2 a.m. Notes or something more?', image: 'https://images.unsplash.com/photo-1517512006864-7edc3b933137?q=80&w=1400&auto=format&fit=crop', date: new Date().toISOString().slice(0,10) },
+      { id: uid(), title: 'Canteen crush alert', excerpt: 'Mysterious stranger buying two chai and a single samosa. Interpret that as you will.', image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1400&auto=format&fit=crop', date: new Date(Date.now()-86400000).toISOString().slice(0,10) },
+      { id: uid(), title: 'Hackathon heroes', excerpt: 'Two all‑nighters, ten Red Bulls, one demo that slayed.', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop', date: new Date(Date.now()-2*86400000).toISOString().slice(0,10) }
+    ];
+    const SAMPLE_EVENTS = [
+      { id: uid(), title: 'Taarangana Pre‑Party', description: 'Glitter dress code. Bring your besties and your bling.', link: '', date: new Date(Date.now()+7*86400000).toISOString().slice(0,10) },
+      { id: uid(), title: 'Coding Night', description: 'Dark mode only. Snacks provided.', link: '', date: new Date(Date.now()+12*86400000).toISOString().slice(0,10) }
+    ];
+
+    let POSTS = load(LS_POSTS, SAMPLE_POSTS);
+    let EVENTS = load(LS_EVENTS, SAMPLE_EVENTS);
+    let TIPS = load(LS_TIPS, []);
+
+    // ====== RENDER CARDS ======
+    const makeCard = (item) => {
+      const id = item.id || uid();
+      const elc = document.createElement('article');
+      elc.className = 'card overflow-hidden rounded-2xl border border-zinc-800/70 bg-black/40';
+      const img = item.image || 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop';
+      const title = item.title || 'Untitled';
+      const excerpt = item.excerpt || '';
+      const date = item.date || '';
+
+      elc.innerHTML = `
+        <div class="aspect-[16/10] overflow-hidden bg-zinc-900">
+          <img src="${img}" alt="" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition"/>
+        </div>
+        <div class="p-4">
+          <h3 class="font-serif text-xl">${title}</h3>
+          <p class="mt-2 text-sm text-beige/80">${excerpt}</p>
+          <div class="mt-3 flex items-center justify-between text-xs text-beige/60">
+            <span>${formatDate(date)} ${timeAgo(date) ? '· ' + timeAgo(date) : ''}</span>
+            <div class="flex gap-2" id="react-${id}"></div>
+          </div>
+        </div>`;
+
+      const reactWrap = elc.querySelector(`#react-${id}`);
+      reactWrap.appendChild(reactionButton(id, 'hearts', '❤'));
+      reactWrap.appendChild(reactionButton(id, 'tea', '🫖'));
+
+      return elc;
+    };
+
+    function renderLatest() {
+      const grid = el('#latestGrid');
+      grid.innerHTML = '';
+      const sorted = [...POSTS].sort((a,b) => new Date(b.date) - new Date(a.date));
+      sorted.slice(0, 6).forEach(i => grid.appendChild(makeCard(i)));
+    }
+
+    function renderBuzz(sort = 'popular') {
+      const list = el('#buzzList');
+      list.innerHTML = '';
+      let arr = [...POSTS];
+      if (sort === 'recent') {
+        arr.sort((a,b) => new Date(b.date) - new Date(a.date));
+      } else {
+        arr.sort((a,b) => {
+          const ra = getReactions(a.id), rb = getReactions(b.id);
+          return ((rb.hearts||0)+(rb.tea||0)) - ((ra.hearts||0)+(ra.tea||0));
+        });
+      }
+      arr.forEach(i => list.appendChild(makeCard(i)));
+    }
+
+    function renderEvents() {
+      const grid = el('#eventsGrid');
+      grid.innerHTML = '';
+      const arr = [...EVENTS].sort((a,b) => new Date(a.date) - new Date(b.date));
+      arr.forEach(ev => {
+        const elc = document.createElement('article');
+        elc.className = 'card overflow-hidden rounded-2xl border border-zinc-800/70 bg-black/40';
+        const when = ev.date || '';
+        elc.innerHTML = `
+          <div class="p-4">
+            <h3 class="font-serif text-xl">${ev.title || 'Event'}</h3>
+            <p class="mt-2 text-sm text-beige/80">${ev.description || ''}</p>
+            <div class="mt-3 flex items-center justify-between text-xs text-beige/60">
+              <span>${formatDate(when)}</span>
+              ${ev.link ? `<a class='text-gold/90 hover:underline' href='${ev.link}' target='_blank'>Details →</a>` : ''}
+            </div>
+          </div>`;
+        grid.appendChild(elc);
+      });
+    }
+
+    // ====== ADMIN UI ======
+    function openAdmin() { el('#adminModal').classList.add('open'); showTab('posts'); refreshAdminLists(); }
+    function closeAdmin() { el('#adminModal').classList.remove('open'); }
+
+    function showTab(name) {
+      ['posts','events','tips'].forEach(t => el(`#tab-${t}`).classList.add('hidden'));
+      el(`#tab-${name}`).classList.remove('hidden');
+      els('.admin-tab').forEach(b => b.classList.remove('border-gold','text-gold'));
+      els('.admin-tab').find(b => b.dataset.tab === name)?.classList.add('border-gold','text-gold');
+    }
+
+    function refreshAdminLists() {
+      // Posts list
+      const wrapP = el('#postList');
+      wrapP.innerHTML = '';
+      POSTS.forEach(p => {
+        const row = document.createElement('div');
+        row.className = 'flex items-start gap-3 p-3 rounded-xl border border-zinc-800';
+        row.innerHTML = `
+          <img src="${p.image}" class="w-20 h-14 object-cover rounded-lg"/>
+          <div class="flex-1">
+            <div class="font-medium">${p.title}</div>
+            <div class="text-xs text-beige/70">${formatDate(p.date)}</div>
+            <div class="text-sm text-beige/80 line-clamp-2">${p.excerpt}</div>
+          </div>
+          <div class="flex gap-2">
+            <button class="edit rounded-full border border-zinc-700 px-3 py-1 text-sm">Edit</button>
+            <button class="del rounded-full border border-red-800/70 text-red-300 px-3 py-1 text-sm">Delete</button>
+          </div>`;
+        row.querySelector('.edit').onclick = () => {
+          el('#postId').value = p.id; el('#postTitle').value = p.title; el('#postExcerpt').value = p.excerpt; el('#postImage').value = p.image; el('#postDate').value = p.date; window.scrollTo({top:0,behavior:'smooth'});
+        };
+        row.querySelector('.del').onclick = () => { POSTS = POSTS.filter(x => x.id !== p.id); save(LS_POSTS, POSTS); refreshAll(); };
+        wrapP.appendChild(row);
+      });
+
+      // Events list
+      const wrapE = el('#eventList');
+      wrapE.innerHTML = '';
+      EVENTS.forEach(ev => {
+        const row = document.createElement('div');
+        row.className = 'flex items-start gap-3 p-3 rounded-xl border border-zinc-800';
+        row.innerHTML = `
+          <div class="flex-1">
+            <div class="font-medium">${ev.title}</div>
+            <div class="text-xs text-beige/70">${formatDate(ev.date)}</div>
+            <div class="text-sm text-beige/80 line-clamp-2">${ev.description||''}</div>
+          </div>
+          <div class="flex gap-2">
+            <button class="edit rounded-full border border-zinc-700 px-3 py-1 text-sm">Edit</button>
+            <button class="del rounded-full border border-red-800/70 text-red-300 px-3 py-1 text-sm">Delete</button>
+          </div>`;
+        row.querySelector('.edit').onclick = () => {
+          el('#eventId').value = ev.id; el('#eventTitle').value = ev.title; el('#eventDesc').value = ev.description||''; el('#eventLink').value = ev.link||''; el('#eventDate').value = ev.date||''; window.scrollTo({top:0,behavior:'smooth'});
+        };
+        row.querySelector('.del').onclick = () => { EVENTS = EVENTS.filter(x => x.id !== ev.id); save(LS_EVENTS, EVENTS); refreshAll(); };
+        wrapE.appendChild(row);
+      });
+
+      // Tips list (admin tab)
+      const wrapT = el('#adminTipList');
+      wrapT.innerHTML = '';
+      if (!TIPS.length) wrapT.innerHTML = '<div class="text-sm text-beige/60">No tips yet.</div>';
+      TIPS.forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'p-3 rounded-xl border border-zinc-800';
+        row.innerHTML = `
+          <div class="text-sm">${t.message}</div>
+          <div class="mt-1 text-xs text-beige/60">${t.name||'Anonymous'} · ${t.email||'—'} · ${formatDate(t.date)}</div>
+          <div class="mt-2 flex gap-2">
+            <button class="approve rounded-full border border-gold/60 text-gold px-3 py-1 text-sm">Approve → Post</button>
+            <button class="remove rounded-full border border-red-800/70 text-red-300 px-3 py-1 text-sm">Delete</button>
+          </div>`;
+        row.querySelector('.approve').onclick = () => {
+          const p = { id: uid(), title: 'Anon Tip', excerpt: t.message.slice(0,140), image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop', date: new Date().toISOString().slice(0,10) };
+          POSTS.unshift(p); save(LS_POSTS, POSTS); TIPS = TIPS.filter(x => x.id !== t.id); save(LS_TIPS, TIPS); refreshAll(); showTab('posts');
+        };
+        row.querySelector('.remove').onclick = () => { TIPS = TIPS.filter(x => x.id !== t.id); save(LS_TIPS, TIPS); refreshAll(); };
+        wrapT.appendChild(row);
+      });
+
+      // Tip queue under Submit section (for admins)
+      const tipQueue = el('#tipQueue');
+      const tipList = el('#tipList');
+      tipList.innerHTML = '';
+      if (window.__isAdmin) {
+        tipQueue.classList.remove('hidden');
+        TIPS.forEach(t => {
+          const box = document.createElement('div');
+          box.className = 'p-3 rounded-xl border border-zinc-800';
+          box.innerHTML = `<div class="text-sm">${t.message}</div><div class="text-xs text-beige/60 mt-1">${t.name||'Anonymous'} · ${t.email||'—'} · ${formatDate(t.date)}</div>`;
+          tipList.appendChild(box);
+        });
+      } else {
+        tipQueue.classList.add('hidden');
+      }
+    }
+
+    function refreshAll() { save(LS_POSTS, POSTS); save(LS_EVENTS, EVENTS); save(LS_TIPS, TIPS); renderLatest(); renderBuzz(el('#sortSelect').value); renderEvents(); refreshAdminLists(); }
+
+    // ====== IMAGE FILE TO DATA-URL ======
+    const fileToDataUrl = (file) => new Promise((res, rej) => { const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=rej; r.readAsDataURL(file); });
+
+    // ====== INIT ======
+    function init() {
+      el('#year').textContent = new Date().getFullYear();
+
+      // Mobile menu
+      const btn = el('#menuBtn');
+      const menu = el('#mobileMenu');
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+      // Sorting
+      el('#sortSelect').addEventListener('change', (e) => renderBuzz(e.target.value));
+
+      // Submit tip
+      el('#tipForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const message = el('#tipMessage').value.trim(); if (!message) return;
+        const tip = { id: uid(), message, name: el('#tipName').value.trim(), email: el('#tipEmail').value.trim(), date: new Date().toISOString() };
+        TIPS.unshift(tip); save(LS_TIPS, TIPS);
+        el('#tipMessage').value = ''; el('#tipName').value = ''; el('#tipEmail').value = '';
+        el('#tipStatus').textContent = 'Thanks for the tea. 🫖 Pending review.';
+        setTimeout(()=> el('#tipStatus').textContent = '', 3000);
+        refreshAdminLists();
+      });
+
+      // Contact form → mailto fallback
+      el('#contactForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const body = encodeURIComponent(`${data.get('message')}` + `
+
+— ${data.get('name')||'Anonymous'} (${data.get('email')||''})`);
+        window.location.href = CONTACT_MAILTO + '&body=' + body;
+        el('#contactStatus').textContent = 'Opening email app…';
+        setTimeout(()=> el('#contactStatus').textContent = '', 3000);
+        e.target.reset();
+      });
+
+      // Admin button
+      const promptAdmin = () => {
+        const pwd = prompt('Enter admin password');
+        if (pwd === ADMIN_PASSWORD) { window.__isAdmin = true; openAdmin(); } else if (pwd !== null) { alert('Wrong password'); }
+      };
+      el('#adminBtn').addEventListener('click', promptAdmin);
+      el('#adminBtnMobile').addEventListener('click', promptAdmin);
+      el('#adminClose').addEventListener('click', closeAdmin);
+      els('.admin-tab').forEach(b => b.addEventListener('click', ()=> showTab(b.dataset.tab)));
+
+      // Post form
+      el('#postImageFile').addEventListener('change', async (e) => {
+        const f = e.target.files?.[0]; if (!f) return; el('#postImage').value = await fileToDataUrl(f);
+      });
+      el('#postForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = el('#postId').value || uid();
+        const obj = { id, title: el('#postTitle').value.trim(), excerpt: el('#postExcerpt').value.trim(), image: el('#postImage').value.trim(), date: el('#postDate').value || new Date().toISOString().slice(0,10) };
+        const i = POSTS.findIndex(p => p.id === id);
+        if (i >= 0) POSTS[i] = obj; else POSTS.unshift(obj);
+        save(LS_POSTS, POSTS); e.target.reset(); el('#postId').value=''; refreshAll();
+      });
+      el('#resetPost').addEventListener('click', () => { el('#postForm').reset(); el('#postId').value=''; });
+
+      // Event form
+      el('#eventForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = el('#eventId').value || uid();
+        const obj = { id, title: el('#eventTitle').value.trim(), description: el('#eventDesc').value.trim(), link: el('#eventLink').value.trim(), date: el('#eventDate').value || '' };
+        const i = EVENTS.findIndex(x => x.id === id);
+        if (i >= 0) EVENTS[i] = obj; else EVENTS.unshift(obj);
+        save(LS_EVENTS, EVENTS); e.target.reset(); el('#eventId').value=''; refreshAll();
+      });
+      el('#resetEvent').addEventListener('click', () => { el('#eventForm').reset(); el('#eventId').value=''; });
+
+      // Export/Import
+      el('#exportBtn').addEventListener('click', () => {
+        const data = { posts: POSTS, events: EVENTS, tips: TIPS };
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = 'gg-igdtuw-data.json'; a.click(); URL.revokeObjectURL(url);
+      });
+      el('#importInput').addEventListener('change', async (e) => {
+        const f = e.target.files?.[0]; if (!f) return;
+        const text = await f.text();
+        try { const obj = JSON.parse(text); POSTS = obj.posts||POSTS; EVENTS = obj.events||EVENTS; TIPS = obj.tips||TIPS; refreshAll(); alert('Imported.'); }
+        catch { alert('Invalid JSON'); }
+      });
+      el('#clearAll').addEventListener('click', () => {
+        if (confirm('This clears posts, events, and tips saved in this browser. Continue?')) {
+          localStorage.removeItem(LS_POSTS); localStorage.removeItem(LS_EVENTS); localStorage.removeItem(LS_TIPS);
+          POSTS = SAMPLE_POSTS; EVENTS = SAMPLE_EVENTS; TIPS = []; refreshAll();
+        }
+      });
+
+      // Initial render
+      refreshAll();
+    }
+
+    init();
+  </script>
+</body>
+</html>
